@@ -1,11 +1,11 @@
-from transformers import AutoModelForConditionalGeneration
+from transformers import AutoModelForCausalLM
 from transformers import AutoTokenizer
 import torch
 
 DEVICE = "cuda:0" if torch.cuda.is_available() else "cpu"
 
 lm = 'Qwen/Qwen2.5-7B-Instruct'
-lang_model = AutoModelForConditionalGeneration.from_pretrained(lm)
+lang_model = AutoModelForCausalLM.from_pretrained(lm)
 lang_model.to(DEVICE)
 tokenizer = AutoTokenizer.from_pretrained(lm, use_fast=False)
 
